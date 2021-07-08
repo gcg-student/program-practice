@@ -52,7 +52,6 @@ def joseph_solution(
                               - 1 
                               + num_temporary) 
                               % len(joseph_student_list))
-            #joseph_student_list[num_temporary].__del__()
             print("被淘汰的学生信息：" + str(joseph_student_list[num_temporary]))
             del joseph_student_list[num_temporary]
         else:
