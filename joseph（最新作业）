@@ -61,7 +61,6 @@ def joseph_solution(
     return joseph_student_list[0]
 
 if __name__ == '__main__':
-    i = 0
     student_obj = add_student_to_joseph()
     joseph_solution(student_obj, len(student_obj), 3)
 
