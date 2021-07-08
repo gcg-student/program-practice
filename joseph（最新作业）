@@ -41,9 +41,8 @@ def add_student_to_joseph():
 def joseph_solution(
         joseph_student_list, joseph_num_all, 
         joseph_student_delete):
-    if (not joseph_num_all or 
-        not joseph_student_delete):
-        return -1
+    assert(joseph_student_delete > 0)
+    
     num_temporary = 0
     print("学生总数量: ", len(joseph_student_list))
     while True:
@@ -52,6 +51,7 @@ def joseph_solution(
                               - 1 
                               + num_temporary) 
                               % len(joseph_student_list))
+            #joseph_student_list[num_temporary].__del__()
             print("被淘汰的学生信息：" + str(joseph_student_list[num_temporary]))
             del joseph_student_list[num_temporary]
         else:
@@ -64,3 +64,4 @@ if __name__ == '__main__':
     i = 0
     student_obj = add_student_to_joseph()
     joseph_solution(student_obj, len(student_obj), 3)
+
