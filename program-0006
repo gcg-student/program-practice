@@ -1,0 +1,41 @@
+import tkinter as tk
+from tkinter import filedialog
+from os import listdir
+import os, re
+
+def get_all_file_path():
+    windows = tk.Tk()
+    windows.withdraw()
+
+    fold_path = filedialog.askdirectory()
+    all_file_path_relative = listdir(fold_path)
+    all_file_path_absolutely = [os.path.join(fold_path, filename) for filename in all_file_path_relative]
+    all_file_path_absolutely = check_all_file_path(all_file_path_absolutely)
+
+    return all_file_path_absolutely
+
+def check_all_file_path(all_file_path_absolutely):
+    for file in all_file_path_absolutely:
+        if re.findall('.txt$', file) is None:
+            all_file_path_absolutely.remove(file)
+
+    return all_file_path_absolutely
+    print(all_file_path_absolutely)
+
+def statistic_interst_words():
+    all_file_path = get_all_file_path()
+    words_dict = {}
+    for file_path in all_file_path:
+        file = open(file_path, 'r')
+        file_text = file.read()
+
+        words = re.findall('[a-zA-Z0-9]+', file_text)
+        for word in words:
+            words_dict[word] = len(word)
+
+    word_max = max(words_dict, key=words_dict.get)
+    
+    print("单词字母数量最多的为：", word_max)
+
+if __name__ == '__main__':
+    statistic_interst_words()
