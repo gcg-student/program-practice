@@ -2,7 +2,6 @@ from logging import exception
 import unittest
 import joseph_02 as joseph
 
-FILE_PATH = "F:\python\python - program\joseph-01\student_info.csv"
 class StrategyFactoryTest(unittest.TestCase):
     def setUp(self):
         self.strategy = joseph.StrategyFactory()
